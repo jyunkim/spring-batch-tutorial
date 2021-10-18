@@ -1,0 +1,22 @@
+spring:
+  batch:
+    job:
+      enabled: false # CommandLineRunner(애플리케이션 실행 시점에 자동으로 job 수행) 설정 해제 -> 스케줄러 사용
+    jdbc:
+      initialize-schema: never
+
+  datasource:
+    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;
+    url: jdbc:h2:tcp://localhost/~/h2/batch
+    username: sa
+    password:
+
+# 처음에 스키마 복사해서 직접 생성
+#  sql:
+#    init:
+#      schema-locations: classpath:/org/springframework/batch/core/schema-h2.sql # 스키마 위치 설정
+
+logging:
+  level:
+    com.example.springbatch: debug
