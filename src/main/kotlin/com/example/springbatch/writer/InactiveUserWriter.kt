@@ -10,6 +10,7 @@ class InactiveUserWriter(
     private val userRepository: UserRepository
 ) : ItemWriter<User> {
 
+    // chunk size 만큼 데이터를 받고 bulk insert
     override fun write(users: MutableList<out User>) {
         userRepository.saveAll(users)
     }

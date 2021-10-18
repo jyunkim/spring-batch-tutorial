@@ -33,7 +33,7 @@ class InactiveUserJobConfig(
     @Bean
     fun inactiveUserStep(): Step {
         return stepBuilderFactory.get("inactiveUserStep")
-            .chunk<User, User>(4) // 쓰기 시에 청크 단위로 writer 메서드를 실행시킬 단위를 지정 -> 커밋단위가 10
+            .chunk<User, User>(10) // 쓰기 시에 청크 단위로 writer 메서드를 실행시킬 단위를 지정 -> 커밋단위가 10 record
             .reader(inactiveUserReader)
             .processor(inactiveUserProcessor)
             .writer(inactiveUserWriter)
